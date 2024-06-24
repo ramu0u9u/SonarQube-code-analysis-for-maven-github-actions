@@ -35,3 +35,29 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: <your-region>  # Replace with your AWS region
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build and push Docker image to ECR
+        run: |
+          # Replace with your Docker build and push commands
+          docker build -t <ecr-repo-uri>:latest .
+          docker tag <ecr-repo-uri>:latest <ecr-repo-uri>:latest
+          docker push <ecr-repo-uri>:latest
+        env:
+          ECR_REGISTRY: <your-ecr-registry>
+          ECR_REPOSITORY: <your-ecr-repository>
+          AWS_REGION: <your-region>
+
+      - name: Cleanup
+        run: |
+          docker image rm <ecr-repo-uri>:latest  
+        
