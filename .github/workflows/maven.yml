@@ -57,8 +57,14 @@ jobs:
           ECR_REGISTRY: Private registry
           ECR_REPOSITORY: docker-pipeline-2
           AWS_REGION: ap-south-1
-
-      - name: Cleanup
-        run: |
-          docker image rm <ecr-repo-uri>:latest  
+      - name: SSH into EC2 instance and pull Docker image
+        uses: appleboy/ssh-action@master
+        with:
+          host: 35.154.24.97
+          username: ubuntu  # Replace with your EC2 instance username
+          key: ${{ secrets.SSH_PRIVATE_KEY }}  # Add your SSH private key as a secret
+          script: |
+            docker pull 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
+            docker run -d -p 80:8080 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest    
+          
         
