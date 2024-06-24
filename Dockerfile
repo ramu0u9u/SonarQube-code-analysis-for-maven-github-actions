@@ -1,20 +1,12 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:11-jdk
+# Use a base Java image from Docker Hub
+FROM openjdk:11-jre-slim
 
-# Set the working directory in the container
-WORKDIR /usr/src/app
+# Set the working directory inside the container
+WORKDIR /app
 
-# Copy the current directory contents into the container at /usr/src/app
-COPY . .
+# Copy the compiled Java application JAR file into the container
+COPY ./path/to/your/application.jar /app/application.jar
 
-# Compile the Java application (if needed)
-# This step assumes your Java file is named HelloWorld.java
-# If your application requires compilation, uncomment the line below
-# RUN javac HelloWorld.java
+# Command to run your application when the container starts
+CMD ["java", "-jar", "application.jar"]
 
-# Expose the port that your application listens on
-EXPOSE 8080
-
-# Specify the command to run your application
-# Replace 'HelloWorld' with the name of your main class
-CMD ["java", "HelloWorld"]
