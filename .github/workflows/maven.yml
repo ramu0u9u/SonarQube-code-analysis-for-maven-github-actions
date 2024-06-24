@@ -54,9 +54,9 @@ jobs:
           docker tag docker-pipeline-2:latest 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
           docker push 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
         env:
-          ECR_REGISTRY: <your-ecr-registry>
-          ECR_REPOSITORY: <your-ecr-repository>
-          AWS_REGION: <your-region>
+          ECR_REGISTRY: Private registry
+          ECR_REPOSITORY: docker-pipeline-2
+          AWS_REGION: ap-south-1
 
       - name: Cleanup
         run: |
