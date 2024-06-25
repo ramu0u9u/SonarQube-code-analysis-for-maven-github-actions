@@ -53,7 +53,7 @@ jobs:
 
       - name: Build and push Docker image to Amazon ECR
         run: |
-          $(aws ecr get-login --no-include-email --region ap-south-1)
+          aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 654654157582.dkr.ecr.ap-south-1.amazonaws.com
           docker build -t docker-pipeline-2 .
           docker tag docker-pipeline-2:latest 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
           docker push 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
