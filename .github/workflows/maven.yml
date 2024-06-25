@@ -64,7 +64,8 @@ jobs:
           username: ubuntu  # Replace with your EC2 instance username
           key: ${{ secrets.SSH_PRIVATE_KEY }}  # Add your SSH private key as a secret
           script: |
+            aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 654654157582.dkr.ecr.ap-south-1.amazonaws.com
             docker pull 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
-            docker run -d -p 80:8080 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest    
+            docker run -itd -p 80:8080 --name docker 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest    
           
         
