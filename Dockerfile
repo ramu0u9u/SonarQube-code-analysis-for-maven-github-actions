@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy the compiled Java application JAR file into the container
 COPY  target/demo-1.0-SNAPSHOT.jar /app/application.jar
-
+EXPOSE 8085
 # Command to run your application when the container starts
 CMD ["java", "-jar", "application.jar"]
 
