@@ -65,8 +65,8 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            $(aws ecr get-login --no-include-email --region ap-south-1)
+            aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 654654157582.dkr.ecr.ap-south-1.amazonaws.com
             docker pull 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
             docker stop docker || true
             docker rm docker || true
-            docker run -d -p 80:8080 --restart=always --name docker 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
+            docker run -d -p 8080:8080 --restart=always --name docker 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
