@@ -70,4 +70,4 @@ jobs:
             docker pull 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
             docker stop docker || true
             docker rm docker || true
-            docker run -d -p 8080:8080 --restart=always --name docker 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
+            docker run -d -p 8080:8085 --restart=always --name docker 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
