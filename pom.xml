@@ -10,7 +10,7 @@
   <version>1.0-SNAPSHOT</version>
 
   <name>demo</name>
-  <url>http://13.234.116.82:9000/</url>
+  <url>http://15.206.73.255:9000/</url>
 
   <!-- Properties -->
   <properties>
@@ -18,7 +18,7 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <!-- SonarQube configuration -->
-    <sonar.host.url>http://13.234.116.82:9000</sonar.host.url>
+    <sonar.host.url>http://15.206.73.255:9000/</sonar.host.url>
     <sonar.login>squ_58cef1fbd4bfece94fe51f85b8617fa214f319d2</sonar.login>
     <sonar.projectKey>jenkins</sonar.projectKey>
     <sonar.projectName>demo</sonar.projectName>
